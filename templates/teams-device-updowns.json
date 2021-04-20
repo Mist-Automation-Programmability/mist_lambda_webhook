@@ -1,0 +1,57 @@
+{
+    "@type": "MessageCard",
+    "@context": "https://schema.org/extensions",
+    "summary": "Device Up/Down",
+    "themeColor": "0078D7",
+    "title": "Mist Device Up/Down - Site: {{ site_name }}",
+    "sections": [
+        {
+            "activityTitle": "Device Up/Down",
+            "activitySubtitle": "{{ type }}",
+            "activityImage": "https://manage.mist.com/images/logo-grey.png",
+            "facts": [
+              {% if device_name is defined %}
+              {
+                "name": "Device:",
+                "value": "{{ device_name }}"
+              },
+              {% endif %}
+              {% if device_type is defined %}
+              {
+                "name": "Device Type: ",
+                "value": "{{ device_type }}"
+              },
+              {% endif %}
+              {% if reason is defined %}
+              {
+                "name": "Reason:",
+                "value": "{{ reason }}"
+              },
+              {% endif %}
+              {% if text is defined %}
+              {
+                "name": "Text:",
+                "value": "{{ text }}"
+              },
+              {% endif %}
+                {
+                    "name": "Severity:",
+                    "value": "{{ ev_type }}"
+                }
+            ],
+            "text": ""
+        }
+    ],
+    "potentialAction": [
+        {
+            "@type": "OpenUri",
+            "name": "Open in Mist",
+            "targets": [
+                {
+                    "os": "default",
+                    "uri": "https://manage.mist.com/admin/?org_id={{ org_id }}#!alerts/{{ site_id }}"
+                }
+            ]
+        }
+    ]
+}

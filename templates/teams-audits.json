@@ -1,0 +1,37 @@
+{
+    "@type": "MessageCard",
+    "@context": "https://schema.org/extensions",
+    "summary": "Issue 176715375",
+    "themeColor": "0078D7",
+    "title": "Mist Audit - Admin: {{ admin_name }}",
+    "sections": [
+        {
+            "activityTitle": "Mist Audit",
+            "activitySubtitle": " ",
+            "activityImage": "https://manage.mist.com/images/logo-grey.png",
+            "facts": [
+                {
+                    "name": "User:",
+                    "value": "{{ admin_name }}"
+                },
+                {
+                    "name": "Source IP:",
+                    "value": "{{ src_ip }}"
+                }
+            ],
+            "text": "{{ message }}"
+        }
+    ],
+    "potentialAction": [
+        {
+            "@type": "OpenUri",
+            "name": "Open in Audit Log",
+            "targets": [
+                {
+                    "os": "default",
+                    "uri": "https://manage.mist.com/admin/?org_id={{ org_id }}#!auditLogs"
+                }
+            ]
+        }
+    ]
+}

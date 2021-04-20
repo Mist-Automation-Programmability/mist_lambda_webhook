@@ -1,0 +1,94 @@
+{
+    "@type": "MessageCard",
+    "@context": "https://schema.org/extensions",
+    "summary": "Alarm Event {{ id }}",
+    "themeColor": "0078D7",
+    "title": "Mist Alarm - Site: {{ site_name }}",
+    "sections": [
+        {
+            "activityTitle": "Mist Alarm",
+            "activitySubtitle": "{{ type }}",
+            "activityImage": "https://manage.mist.com/images/logo-grey.png",
+            "facts": [
+              {% if aps is defined %}
+              {
+                "name": "Access Points:",
+                "value": "{{ aps|join(',\n ') }}"
+              },
+              {% endif %}
+              {% if hostnames is defined %}
+              {
+                "name": "Hostnames: ",
+                "value": "{{ hostnames|join(',\n ') }}"
+              },
+              {% endif %}
+              {% if switches is defined %}
+              {
+                "name": "Switches:",
+                "value": "{{ switches|join(', ') }}"
+              },
+              {% endif %}
+              {% if gateways is defined %}
+              {
+                "name": "Gateways:",
+                "value": "{{ gateways|join(', ') }}"
+              },
+              {% endif %}
+              {% if ssids is defined %}
+              {
+                "name": "SSIDs:",
+                "value": "{{ ssids|join(', ')}}"
+              },
+              {% endif %}
+              {% if bssids is defined %}
+              {
+                "name": "BSSIDs:",
+                "value": "{{ bssids|join(', ') }}"
+              },
+              {% endif %}
+              {% if wcids is defined %}
+              {
+                "name": "Watched Station IDs:",
+                "value": "{{ wcids|join(', ') }}"
+              },
+              {% endif %}
+              {% if client_macs is defined %}
+              {
+                "name": "Client Macs:",
+                "value": "{{ client_macs|join(', ') }}"
+              },
+              {% endif %}
+              {% if count is defined %}
+              {
+                "name": "Count:",
+                "value": "{{ count }}"
+              },
+              {% endif %}
+              {% if update is defined %}
+              {
+                "name": "Update?:",
+                "value": "{{ update }}"
+              },
+              {% endif %}
+
+                {
+                    "name": "Severity:",
+                    "value": "{{ severity }}"
+                }
+            ],
+            "text": ""
+        }
+    ],
+    "potentialAction": [
+        {
+            "@type": "OpenUri",
+            "name": "Open in Mist",
+            "targets": [
+                {
+                    "os": "default",
+                    "uri": "https://manage.mist.com/admin/?org_id={{ org_id }}#!alerts/{{ site_id }}"
+                }
+            ]
+        }
+    ]
+}

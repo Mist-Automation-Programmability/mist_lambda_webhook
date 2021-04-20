@@ -1,0 +1,62 @@
+{
+    "@type": "MessageCard",
+    "@context": "https://schema.org/extensions",
+    "summary": "Occupancy Event",
+    "themeColor": "0078D7",
+    "title": "Occupancy Alarm - Site: {{ site_name }}",
+    "sections": [
+        {
+            "activityTitle": "Occupancy Event",
+            "activitySubtitle": "{{ type }}",
+            "activityImage": "https://manage.mist.com/images/logo-grey.png",
+            "facts": [
+              {% if zone_name is defined %}
+              {
+                "name": "Zone:",
+                "value": "{{ zone_name }}"
+              },
+              {% endif %}
+              {% if type is defined %}
+              {
+                "name": "Alert Type: ",
+                "value": "{{ type }}"
+              },
+              {% endif %}
+              {% if occupancy_limit is defined %}
+              {
+                "name": "Occupancy Limit:",
+                "value": "{{ occupancy_limit }}"
+              },
+              {% endif %}
+              {% if current_occupancy is defined %}
+              {
+                "name": "Current Occupancy:",
+                "value": "{{ current_occupancy }}"
+              },
+              {% endif %}
+
+                {
+                    "name": "Severity:",
+                    "value": "{{ severity }}"
+                },
+                {
+                    "name": "Timestamp:",
+                    "value": "{{ timestamp }}"
+                }
+            ],
+            "text": ""
+        }
+    ],
+    "potentialAction": [
+        {
+            "@type": "OpenUri",
+            "name": "Open in Mist",
+            "targets": [
+                {
+                    "os": "default",
+                    "uri": "https://manage.mist.com/admin/?org_id={{ org_id }}#!occupancyAnalytics/site/{{ site_id }}"
+                }
+            ]
+        }
+    ]
+}

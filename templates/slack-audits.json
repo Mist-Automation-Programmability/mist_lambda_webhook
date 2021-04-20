@@ -1,0 +1,48 @@
+{
+	"blocks": [
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "*Mist Audit*\nAdmin: {{payload.admin_name}}"
+			},
+			"accessory": {
+				"type": "image",
+				"image_url": "https://manage.mist.com/images/logo-grey.png",
+				"alt_text": "Mist"
+			}
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "mrkdwn",
+					"text": "*User:*\n {{payload.admin_name}}"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*Source IP:*\n {{payload.src_ip}}"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*Device:* \n {{payload.device_id}}"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*Site:*\n {{payload.site_id}}"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*Timestamp:*\n {{payload.timestamp}}"
+				}
+			]
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "{{payload.message}}\nhttps://manage.mist.com/admin/?org_id={{payload.org_id}}#!auditLogs"
+			}
+		}
+	]
+}

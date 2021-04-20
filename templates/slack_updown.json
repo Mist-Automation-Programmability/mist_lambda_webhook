@@ -1,0 +1,40 @@
+{
+	"blocks": [
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "*Mist {{ device_type.upper() }} {{ updown }}*\nSite : {{ site_name }}"
+			},
+			"accessory": {
+				"type": "image",
+				"image_url": "https://manage.mist.com/images/logo-grey.png",
+				"alt_text": "Mist"
+			}
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "mrkdwn",
+					"text": "*Type:*\n {{ device_type.upper() }} {{ updown }}"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*{{ device_type.upper() }}:* \n  {{ device_name}} - {{ mac }}"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*Timestamp:*\n {{ timestamp }}"
+				}
+			]
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "https://manage.mist.com/admin/?org_id={{ org_id }}#!alerts/{{ site_id }}"
+			}
+		}
+	]
+}
